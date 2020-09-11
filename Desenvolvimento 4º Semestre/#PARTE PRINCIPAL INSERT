@@ -1,0 +1,39 @@
+#PARTE PRINCIPAL INSERT 
+def CadastroBancoDeDados():
+    Nome = Nome.get()
+    Email = Email.get()
+    Cpf = Cpf.get()
+    Telefone = Telefone.get()
+    Usuario = Usuario.get()
+    Senha = Senha.get()
+
+    if (Nome == "" and E-mail == "" and Telefone == "" and Usuario == "" and Senha == ""):
+        messagebox.showerror(tittle='Erro ao Cadastrar', message="Preencha todos os Campos")
+    else:
+        DataBase.cursor.execute('''
+        INSERT INTO Users(Nome, E-mail, Telefone, Usuario, Senha) VALUES(?, ?, ?, ?, ?)
+        ''', (Nome, E-mail, Telefone, Usuario, Senha))
+        DataBase.comn.commit()
+        messagebox.showinfo(tittle='Cadastro Info', message='Conta criada com sucesso')
+
+        ##########
+
+
+import sqlite3
+comn = sqlite3.connect('Cadastro.db')
+
+cursor = comn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS USUARIOS (
+    Nome TEXT NOT NULL,
+    Email TEXT NOT NULL,
+    CFP TEXT NOT NULL,
+    Telefone  TEXT NO NULL,
+    Usuario TEXT NOT NULL,
+    Senha TEXT NOT NULL,
+);
+
+""" )
+
+print('Conectado ao banco de dados ')
